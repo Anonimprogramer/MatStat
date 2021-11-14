@@ -85,8 +85,8 @@ def equipropable_method_grapic(variation_range):
     for i in range(n):
         x.append(list_a[i])
         x.append((list_b[i]))
-        y.append(1/(n*list_b[i]-list_a[i]))
-        y.append(1 / (n * list_b[i] - list_a[i]))
+        y.append(1/(n*(list_b[i]-list_a[i])))
+        y.append(1 / (n * (list_b[i] - list_a[i])))
 
     x.append(variation_range[len(variation_range)-1])
     y.append(0)
