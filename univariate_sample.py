@@ -51,15 +51,14 @@ def equiinterval_method_grapic(variation_range):
     for i in range(1, 11):
         delta_lists.append([])
         for value in variation_range:
-            if delta * (i - 1) <= value <= delta * i:
+            if delta * (i - 1) < value <= delta * i:
                 delta_lists[i - 1].append(value)
-
     x = [0]
     y = [0]
     i = 0
     for list in delta_lists:
-        x.append(delta * i)
-        x.append(delta * (i + 1))
+        x.append(delta * i / 10)
+        x.append(delta * (i + 1) / 10)
         y.append(len(list) / n / delta)
         y.append(len(list) / n / delta)
         i += 1
@@ -75,9 +74,10 @@ def equipropable_method_grapic(variation_range):
     list_a = [variation_range[0]]
     list_b = []
     for i in range(1, 10):
-        list_a.append((variation_range[i * n] + variation_range[i * n + 1]) / 2)
-        list_b.append((variation_range[i * n] + variation_range[i * n + 1]) / 2)
-    list_b.append(variation_range[len(variation_range)-1])
+        list_a.append((variation_range[i * n] + variation_range[i * n - 1]) / 2)
+        list_b.append((variation_range[i * n] + variation_range[i * n - 1]) / 2)
+    list_b.append(variation_range[len(variation_range) - 1])
+    print(variation_range)
 
     x = [0]
     y = [0]
@@ -85,13 +85,25 @@ def equipropable_method_grapic(variation_range):
     for i in range(n):
         x.append(list_a[i])
         x.append((list_b[i]))
-        y.append(1/(n*(list_b[i]-list_a[i])))
-        y.append(1 / (n * (list_b[i] - list_a[i])))
+        z = 10
+        k = 1
+        l = 1
+        if (i < 9):
+            while variation_range[i * 10 + 9 + k] == variation_range[i * 10 + 9]:
+                k += 1
+        if (i > 0):
+            while variation_range[i * 10 - l] == variation_range[i * 10]:
+                l += 1
+        y.append((z + k - 2 + l) / (n * n * (list_b[i] - list_a[i])))
+        y.append((z + k - 2 + l) / (n * n * (list_b[i] - list_a[i])))
 
-    x.append(variation_range[len(variation_range)-1])
+    x.append(variation_range[len(variation_range) - 1])
     y.append(0)
+    print(list_a)
+    print(list_b)
+    print(x)
+    print(y)
+    print(variation_range)
 
     plt.plot(x, y)
     plt.show()
-
-
