@@ -1,5 +1,4 @@
 import univariate_sample as us
-import relations as re
 
 univariate_sample = us.load("univariate_input.txt")
 
@@ -11,6 +10,10 @@ us.equiinterval_method_grapic(variety_range)
 
 us.equipropable_method_grapic(variety_range)
 
+print(us.expectation(variety_range), "- точечное мат ожидание")
 
-set = ("n", "i", "s", "t", "y", "r", "a", "k")
-re.find_relations(set, set)
+print(us.dispersion(variety_range), "- точечная дисперсия")
+
+us.confidence_interval_MAT(variety_range)
+
+us.confidence_interval_DIS(variety_range)
