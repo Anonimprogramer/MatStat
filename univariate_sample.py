@@ -99,11 +99,36 @@ def equipropable_method_grapic(variation_range):
 
     x.append(variation_range[len(variation_range) - 1])
     y.append(0)
-    print(list_a)
-    print(list_b)
-    print(x)
-    print(y)
-    print(variation_range)
 
     plt.plot(x, y)
     plt.show()
+
+
+def expectation(variation_range):
+    sum = 0
+    for i in variation_range:
+        sum += i
+    return sum / len(variation_range)
+
+
+def dispersion(variation_range):
+    n = len(variation_range)
+    exp = expectation(variation_range)
+    cum = 0
+    for i in variation_range:
+        cum += i * i
+    return cum / (n - 1) - n / (n - 1) * pow(exp, 2)
+
+
+def confidence_interval_MAT(variation_range):
+    stirling = 1.96
+    exp = expectation(variation_range)
+    interval = sqrt(dispersion(variation_range)) * stirling / sqrt(len(variation_range))
+    print(exp - interval, "<=", exp, "<=", exp + interval)
+
+
+def confidence_interval_DIS(variation_range):
+    stirling = 1.96
+    dis = dispersion(variation_range)
+    interval = stirling*sqrt(2/(len(variation_range)-1))*dis
+    print(dis - interval, "<=", dis, "<=", dis + interval)
