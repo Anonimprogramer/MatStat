@@ -17,3 +17,9 @@ print(us.dispersion(variety_range), "- точечная дисперсия")
 us.confidence_interval_MAT(variety_range)
 
 us.confidence_interval_DIS(variety_range)
+
+us.distribution_function_grapic_and_even_distributin_function(variety_range)
+
+us.distribution_function_grapic_and_other_function(variety_range)
+
+us.hypotize_of_normal_law(variety_range)
