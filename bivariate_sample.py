@@ -37,11 +37,9 @@ def correlation_coefficent(x, y):
 def interval_correlation_mark(x, y):
     Y = 0.95
     R = correlation_coefficent(x, y)
-    print(R)
     z = 1.96
     # я найду как находить аргументы Лапласа чесна-чесна
     n = len(x)
-    print(0.5 * math.log((1 + R) / (1 - R)))
     a = 0.5 * math.log((1 + R) / (1 - R)) - z / (sqrt(n - 3))
     b = 0.5 * math.log((1 + R) / (1 - R)) + z / (sqrt(n - 3))
     return a, b
@@ -53,7 +51,7 @@ def hypotize_of_lack_correlation(x,y):
     Z=(abs(R)*sqrt(n))/(1-pow(R,2))
     print(Z)
     if(Z>z):
-        print("Корреляция есть,но какая?")
+        print("Корреляция есть")
     else:
         print("Величины некореллированны")
 
@@ -62,8 +60,8 @@ def dispersion_diargram_and_regression_line(x,y):
     a=correlation_moment(x,y)/us.dispersion(x)
     b=us.expectation(y)-a*us.expectation(x)
     Y=X*a+b
-    print(a)
-    print(b)
+    print(a,"-a1*")
+    print(b,"-a0*")
     plt.plot(x, y,'ro')
     plt.plot(X,Y)
     plt.show()
