@@ -1,10 +1,12 @@
 import univariate_sample as us
-
 import bivariate_sample as bs
 
+print("-----Одномерная выборка------")
 univariate_sample = us.load("univariate_input.txt")
 
 variety_range = us.variation_range_of_univariate_sample(univariate_sample)
+print("Вариационный ряд величины X")
+print(variety_range)
 
 us.distribution_function_grapic(variety_range)
 
@@ -20,15 +22,13 @@ us.confidence_interval_MAT(variety_range)
 
 us.confidence_interval_DIS(variety_range)
 
-us.distribution_function_grapic_and_even_distributin_function(variety_range)
+# us.distribution_function_grapic_and_even_distributin_function(variety_range) #not working correctly
 
 us.distribution_function_grapic_and_other_function(variety_range)
 
 us.hypotize_of_normal_law(variety_range)
 
-print("А вот тут как бы одиночная выборка закончилась, начинается двумерная,типа пары какие-то,хз матеша это какой-то "
-      "кибербуллинг одиноких людей, я имею ввиду что дальше?Семейство первообразных?(если что,то я просто рофлю)")
-
+print("-----Двумерная выборка------")
 x = []
 y = []
 bs.load(x, y, "bivariate_input.txt")
