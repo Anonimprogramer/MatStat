@@ -22,8 +22,6 @@ us.confidence_interval_MAT(variety_range)
 
 us.confidence_interval_DIS(variety_range)
 
-# us.distribution_function_grapic_and_even_distributin_function(variety_range) #not working correctly
-
 us.distribution_function_grapic_and_other_function(variety_range)
 
 us.hypotize_of_normal_law(variety_range)
@@ -37,3 +35,4 @@ print(bs.correlation_coefficent(x,y),"-точечная оценка коэфф�
 print(bs.interval_correlation_mark(x,y),"- интервальная оценка коэффициента корреляции с надежностью γ = 0,95")
 bs.hypotize_of_lack_correlation(x,y)
 bs.dispersion_diargram_and_regression_line(x,y)
+
