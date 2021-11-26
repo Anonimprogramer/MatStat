@@ -23,7 +23,6 @@ def correlation_moment(x, y):
     for i in range(n + 1):
         sum += (x[i] - exp_x) * (y[i] - exp_y)
     correlation_moment_mark = sum / n
-    # Кто нашёл Марка?
     return correlation_moment_mark
 
 
@@ -38,30 +37,36 @@ def interval_correlation_mark(x, y):
     Y = 0.95
     R = correlation_coefficent(x, y)
     z = 1.96
-    # я найду как находить аргументы Лапласа чесна-чесна
+    # Reverse Laplas Allert!!!!
+    # z = us.Laplas_reverse(Y/2)
     n = len(x)
     a = 0.5 * math.log((1 + R) / (1 - R)) - z / (sqrt(n - 3))
     b = 0.5 * math.log((1 + R) / (1 - R)) + z / (sqrt(n - 3))
     return a, b
 
-def hypotize_of_lack_correlation(x,y):
-    z=1.96
-    n=len(x)
-    R=correlation_coefficent(x,y)
-    Z=(abs(R)*sqrt(n))/(1-pow(R,2))
+
+def hypotize_of_lack_correlation(x, y):
+    z = 1.96
+    # Reverse Laplas Allert!!!
+    # z = us.Laplas_reverse(Y/2)
+    n = len(x)
+    R = correlation_coefficent(x, y)
+    Z = (abs(R) * sqrt(n)) / (1 - pow(R, 2))
     print(Z)
-    if(Z>z):
+    if Z > z:
         print("Корреляция есть")
     else:
         print("Величины некореллированны")
 
-def dispersion_diargram_and_regression_line(x,y):
-    X=np.arange(min(x)-1,max(x)+1,0.1)
-    a=correlation_moment(x,y)/us.dispersion(x)
-    b=us.expectation(y)-a*us.expectation(x)
-    Y=X*a+b
-    print(a,"-a1*")
-    print(b,"-a0*")
-    plt.plot(x, y,'ro')
-    plt.plot(X,Y)
+
+def dispersion_diargram_and_regression_line(x, y):
+    X = np.arange(min(x) - 1, max(x) + 1, 0.1)
+    a1 = correlation_moment(x, y) / us.dispersion(x)
+    a0 = us.expectation(y) - a1 * us.expectation(x)
+    Y = X * a1 + a0
+    print(a1, "-a1*")
+    print(a0, "-a0*")
+    plt.plot(x, y, 'ro')
+    plt.plot(X, Y)
+    plt.title("Диаграмма рассеивания и линия регресии")
     plt.show()
