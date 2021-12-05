@@ -69,7 +69,7 @@ def distribution_function_grapic(variation_range):
     plt.plot(x, y, lw=1)
     plt.grid()
     ax = plt.gca()
-    plt.xlim([0, 5])
+    plt.xlim(variation_range[0],variation_range[len(variation_range)-1])
     plt.ylim([0, 1.2])
     plt.show()
 
