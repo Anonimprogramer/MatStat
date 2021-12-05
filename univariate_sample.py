@@ -82,7 +82,7 @@ def hypotize_of_normal_law(variation_range):
     dis = dispersion(variation_range)
     avg = sqrt(dis)
     another = []
-    function_type = kolmogorov_choose(variation_range)
+    function_type = "normal_distribution"
 
     print("Таблица значений для проверки гипотезы о нормальном законе с помощью критерия χ 2 .")
     print("----------------------------------------------------------------------------------")
@@ -118,7 +118,7 @@ def hypotize_of_normal_law(variation_range):
                         3),
                   " | ", round(len(delta_lists[i - 1]) / n / n, 3), " | ",
                   round(pow((len(delta_lists[i - 1]) / n / n - interval_teoretic_propabilities[i - 1]), 2) /
-                        interval_teoretic_propabilities[i - 1] / 2, 3))
+                        interval_teoretic_propabilities[i - 1], 3))
         elif i == 1:
             interval_teoretic_propabilities.append(f_0(delta * i + variation_range[0], exp, dis, function_type, variation_range[0],
                             variation_range[len(variation_range) - 1]) - f_0(-100000, exp, dis, function_type, variation_range[0],
@@ -133,7 +133,7 @@ def hypotize_of_normal_law(variation_range):
                             variation_range[len(variation_range) - 1]), 3), " | ",
                   round(len(delta_lists[i - 1]) / n / n, 3), " | ",
                   round(pow((len(delta_lists[i - 1]) / n / n - interval_teoretic_propabilities[i - 1]), 2) /
-                        interval_teoretic_propabilities[i - 1] / 2, 3))
+                        interval_teoretic_propabilities[i - 1], 3))
 
         elif i == 10:
             interval_teoretic_propabilities.append(
@@ -156,7 +156,7 @@ def hypotize_of_normal_law(variation_range):
                             variation_range[len(variation_range) - 1]), 3), " | ",
                   round(len(delta_lists[i - 1]) / n / n, 3), " | ",
                   round(pow((len(delta_lists[i - 1]) / n / n - interval_teoretic_propabilities[i - 1]), 2) /
-                        interval_teoretic_propabilities[i - 1] / 2, 3))
+                        interval_teoretic_propabilities[i - 1], 3))
     for i in range(0, 10):
         another.append(pow((len(delta_lists[i]) / n / n - interval_teoretic_propabilities[i]), 2) /
                        interval_teoretic_propabilities[i])
@@ -175,7 +175,7 @@ def hypotize_of_normal_law(variation_range):
 
 def f_0(x, exp, dis, function_type, a0, an):
     if function_type == "normal_distribution":
-        return Laplas_function((x - exp) / sqrt(dis)) + 0.5
+        return Laplas_function((x - exp) / sqrt(dis))+0.5
     elif function_type == "exponential_distribution":
         if x>1000:
             return 1
