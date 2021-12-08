@@ -19,6 +19,8 @@ def correlation_moment(x, y):
     n = len(x) - 1
     exp_x = us.expectation(x)
     exp_y = us.expectation(y)
+    print("Mx-",exp_x)
+    print("My-",exp_y)
     sum = 0
     for i in range(n + 1):
         sum += (x[i] - exp_x) * (y[i] - exp_y)
@@ -30,6 +32,8 @@ def correlation_coefficent(x, y):
     correlation_moment_mark = correlation_moment(x, y)
     dis_x = us.dispersion(x)
     dis_y = us.dispersion(y)
+    print("Dx-",dis_x)
+    print("Dy-", dis_y)
     return correlation_moment_mark / sqrt((dis_y * dis_x))
 
 
@@ -52,7 +56,7 @@ def hypotize_of_lack_correlation(x, y):
     n = len(x)
     R = correlation_coefficent(x, y)
     Z = (abs(R) * sqrt(n)) / (1 - pow(R, 2))
-    print(Z)
+    print(Z,"- Z")
     if Z > z:
         print("Корреляция есть")
     else:
