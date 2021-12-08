@@ -30,6 +30,10 @@ print("-----Двумерная выборка------")
 x = []
 y = []
 bs.load(x, y, "bivariate_input.txt")
+print("Mx-", us.expectation(x))
+print("My-", us.expectation(y))
+print("Dx-", us.dispersion(x))
+print("Dy-", us.dispersion(y))
 print(bs.correlation_moment(x,y),"- оценка корреляционного момента")
 print(bs.correlation_coefficent(x,y),"-точечная оценка коэффициент корреляции")
 print(bs.interval_correlation_mark(x,y),"- интервальная оценка коэффициента корреляции с надежностью γ = 0,95")
