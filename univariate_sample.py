@@ -82,7 +82,7 @@ def hypotize_of_normal_law(variation_range):
     dis = dispersion(variation_range)
     avg = sqrt(dis)
     another = []
-    function_type = "normal_distribution"
+    function_type = kolmogorov_choose(variation_range)
 
     print("Таблица значений для проверки гипотезы о нормальном законе с помощью критерия χ 2 .")
     print("----------------------------------------------------------------------------------")
@@ -182,7 +182,7 @@ def f_0(x, exp, dis, function_type, a0, an):
         elif x<-1000:
             return 0
         else:
-            return 1 - pow(math.e, -exp * x)
+            return 1 - pow(math.e, -x/exp)
     elif function_type == "uniform_distribution":
         if x>1000:
             return 1
