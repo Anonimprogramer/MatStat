@@ -1,4 +1,4 @@
-#MatStat helper
+# MatStat helper
                             Author cannot come up with the title
 
 Данный набор питонических функций делает задание по математической статистике
