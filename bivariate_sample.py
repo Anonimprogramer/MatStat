@@ -54,9 +54,9 @@ def hypotize_of_lack_correlation(x, y):
     Z = (abs(R) * sqrt(n)) / (1 - pow(R, 2))
     print(Z,"- Z")
     if Z > z:
-        print("Корреляция есть")
+        print("Correlation is present")
     else:
-        print("Величины некореллированны")
+        print("Values aren't correlated")
 
 
 def dispersion_diargram_and_regression_line(x, y):
@@ -68,5 +68,5 @@ def dispersion_diargram_and_regression_line(x, y):
     print(a0, "-a0*")
     plt.plot(x, y, 'ro')
     plt.plot(X, Y)
-    plt.title("Диаграмма рассеивания и линия регресии")
+    plt.title("Dispersion diagram and regression line")
     plt.show()

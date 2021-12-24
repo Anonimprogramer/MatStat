@@ -3,6 +3,7 @@ from math import erf
 
 import numpy as np
 from numpy import sqrt
+import matplotlib
 import matplotlib.pyplot as plt
 
 
@@ -84,7 +85,7 @@ def hypotize_of_normal_law(variation_range):
     another = []
     function_type = kolmogorov_choose(variation_range)
 
-    print("Таблица значений для проверки гипотезы о нормальном законе с помощью критерия χ 2 .")
+    print("\n\n\nTable of values to check hypothesys about norm rule with kriteria kxi 2 .")
     print("----------------------------------------------------------------------------------")
     print("|  j  |  Aj  |  Bj  |  F0(Aj)  |  F0(Bj)  |    pj     |   pj*  |  (pj*-pj)^2/2pj")
     print("----------------------------------------------------------------------------------")
@@ -123,7 +124,7 @@ def hypotize_of_normal_law(variation_range):
             interval_teoretic_propabilities.append(f_0(delta * i + variation_range[0], exp, dis, function_type, variation_range[0],
                             variation_range[len(variation_range) - 1]) - f_0(-100000, exp, dis, function_type, variation_range[0],
                             variation_range[len(variation_range) - 1]))
-            print(i, " | ", "-∞   ", " | ",
+            print(i, " | ", "-inf ", " | ",
                   round(delta * i + variation_range[0], 3), " | ",
                   0, " | ",
                   round(f_0(delta * i + variation_range[0], exp, dis, function_type, variation_range[0],
@@ -143,7 +144,7 @@ def hypotize_of_normal_law(variation_range):
                             function_type, variation_range[0],
                             variation_range[len(variation_range) - 1]))
             print(i, " | ", round(delta * (i - 1) + variation_range[0], 3), " | ",
-                  "+∞   ", " | ",
+                  "+inf ", " | ",
                   round(f_0(delta * (i - 1) + variation_range[0], exp, dis,
                             function_type, variation_range[0],
                             variation_range[len(variation_range) - 1]), 3),
@@ -163,14 +164,14 @@ def hypotize_of_normal_law(variation_range):
         sum += interval_teoretic_propabilities[i]
         sum1 += another[i]
     if sum == 1:
-        print(sum, "- контрольная сумма выполняется")
+        print(sum, "- control sum vipolnyaetsa")
     else:
-        print(sum, "контрольная сумма не выполняется")
-    print("χ 2=", sum1 * len(variation_range))
+        print(sum, " - control sum ne vipolnyaetsa")
+    print("ksi 2=", sum1 * len(variation_range))
     if sum1 * len(variation_range) < 14.07:
-        print("Отклонять гипотезу нет оснований")
+        print("No foundation to dicline hypothesys")
     else:
-        print("есть основания отклонить гипотезу")
+        print("Have foundation to decline hypothesys")
 
 
 def f_0(x, exp, dis, function_type, a0, an):
@@ -261,11 +262,11 @@ def distribution_function_grapic_and_other_function(variation_range):
     y_e = []
     function_type = kolmogorov_choose(variation_range)
     if function_type=="normal_distribution":
-        print("Выдвигаем гипотезу о нормальном распределении")
+        print("Make hypothesys about norm distribution")
     elif function_type=="uniform_distribution":
-        print("Выдвигаем гипотезу о равномерном распределении")
+        print("Make hypothesys about equal distribution")
     else:
-        print("Выдвигаем гипотезу о экспоненциальном распределении")
+        print("Make hypothesys about exponential distribution")
     for z in x_e:
         y_e.append(f_0(z, expectation(variation_range), dispersion(variation_range), function_type, variation_range[0],
                        variation_range[len(variation_range) - 1]))
@@ -283,12 +284,12 @@ def distribution_function_grapic_and_other_function(variation_range):
             y_max[0] = f
             y_max[1] = j
 
-    print(max, "Z для Колмогорова")
-    print(max * sqrt(len(variation_range)), "лябда для Колмогорова")
+    print(max, "Z For Kolmogorov")
+    print(max * sqrt(len(variation_range)), "Lambda for Kolmogorov")
     if max * sqrt(len(variation_range)) > 1.36:
-        print("Гипотезу о  распределении есть основания отвергать")
+        print("Have foundation to dicline hypothesys about distribution")
     else:
-        print("Гипотезу о распределении нет основания отвергать")
+        print("No foundation to dicline hypothesys about distribution")
     plt.plot(x_e, y_e)
     plt.plot(x_max, y_max)
     plt.plot(x, y, lw=1)
@@ -347,7 +348,7 @@ def equiinterval_method_grapic(variation_range):
     n = int(sqrt(len(variation_range)))
     delta = (variation_range[len(variation_range) - 1] - variation_range[0]) / n
     delta_lists = []
-    print("Таблица значений для равноинтервального способа")
+    print("\nTable for equal intervals")
     print("----------------------------------------------------")
     print("|  j  |  Aj  |  Bj  |  hj  |  vj  |  pj*  |   fj*  |")
     print("----------------------------------------------------")
@@ -374,7 +375,7 @@ def equiinterval_method_grapic(variation_range):
     x.append(delta * n + variation_range[0])
 
     plt.plot(x, y)
-    plt.title("Гистограмма равноинтервального способа")
+    plt.title("Histogram of equal intervals")
     plt.show()
 
 
@@ -410,7 +411,7 @@ def equipropable_method_grapic(variation_range):
     x.append(variation_range[len(variation_range) - 1])
     y.append(0)
 
-    print("Таблица значений для равновероятностного способа")
+    print("\n\nTable for equal probability")
     print("----------------------------------------------------")
     print("|  j  |  Aj  |  Bj  |    hj    |  vj  |  pj*  |   fj*  |")
     print("----------------------------------------------------")
@@ -421,7 +422,7 @@ def equipropable_method_grapic(variation_range):
               round(list_v[i - 1] / (list_b[i - 1] - list_a[i - 1]) / len(variation_range), 4))
 
     plt.plot(x, y)
-    plt.title("Гистограмма равновероятностного способа")
+    plt.title("Histogram for equal probability")
     plt.show()
 
 
@@ -449,8 +450,8 @@ def confidence_interval_MAT(variation_range):
     exp = expectation(variation_range)
     interval = sqrt(dispersion(variation_range)) * laplas / sqrt(len(variation_range))
     message = str(exp - interval) + "<=" + str(exp) + "<=" + str(
-        exp + interval) + "доверительный интервал для матожидания с " \
-                          "надежностью γ = " + str(Y)
+        exp + interval) + "doveritilny interval for M with " \
+                          "gamma = " + str(Y)
     print(message)
 
 
@@ -462,6 +463,6 @@ def confidence_interval_DIS(variation_range):
     dis = dispersion(variation_range)
     interval = laplas * sqrt(2 / (len(variation_range) - 1)) * dis
     message = str(dis - interval) + "<=" + str(dis) + "<=" + str(
-        dis + interval) + "доверительный интервал для дисперсии с " \
-                          "надежностью γ = " + str(Y)
+        dis + interval) + "doveritilny interval for D with " \
+                          "gamma = " + str(Y)
     print(message)
